@@ -25,7 +25,11 @@ class CPU:
 			addr += 1
 	def HLT_OP(self, op):
 		HLT = self.HLT
-		if op is HLT:
+		ram = self.ram
+		ram_len = len(self.ram) - 1
+		pc = self.pc
+		command = ram[pc]
+		if command is HLT:
 			self.running = False
 
 
