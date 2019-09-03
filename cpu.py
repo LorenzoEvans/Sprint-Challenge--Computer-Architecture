@@ -23,16 +23,29 @@ class CPU:
 		for instr in ram:
 			ram[addr] = instr
 			addr += 1
-	def HLT_OP(self, op):
 
+	def HLT_OP(self, op):
 		HLT = self.HLT
 		if op is HLT:
 			self.running = False
 
-	def alu(self, op):
-		ADD, MUL, SUB, DIV, MOD = (self.ADD, self.MUL, self.SUB, self.DIV, self.MOD)
+	def ADD_OP(self, reg_a, reg_b):
+		pass
+
+	def MUL_OP(self, reg_a, reg_b):
+		pass
+
+	def SUB_OP(self, reg_a, reg_b):
+		pass
+
+	def DIV_OP(self, reg_a, reg_b):
+		pass
+
+
+	def alu(self, op, reg_a, reg_b):
+		ADD, MUL, SUB, DIV = (self.ADD, self.MUL, self.SUB, self.DIV)
 		ADD_OP, MUL_OP = (self.ADD_OP, self.MUL_OP)
-		SUB_OP, DIV_OP, MOD_OP = (self.SUB_OP, self.DIV_OP, self.MOD_OP)
+		SUB_OP, DIV_OP= (self.SUB_OP, self.DIV_OP)
 		pc = self.pc
 		if op is ADD:
 			ADD_OP(reg_a, reg_b)
@@ -45,9 +58,6 @@ class CPU:
 			pc += 1
 		elif op is DIV:
 			DIV_OP(reg_a, reg_b)
-			pc += 1
-		elif op is MOD:
-			MOD_OP(reg_a, reg_b)
 			pc += 1
 		else:
 			raise Exception("Unsupported ALU operation")
