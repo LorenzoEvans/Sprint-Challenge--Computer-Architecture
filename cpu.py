@@ -15,6 +15,21 @@ class CPU:
 		self.MOD = 0b10100100
 		self.running = True
 
+	def PRN_OP(self):
+		pc = self.pc
+		reg = self.registers
+		read = self.ram_read
+		op_a = read[pc + 1]
+		print(reg[op_a])
+		pc += 2
+
+	def LDI_OP(self):
+		pc = self.pc
+		reg = self.registers
+		read = self.ram_read
+		op_a = read(pc + 1)
+		op_b = read(pc + 2)
+		pc += 3
 
 	def load(self):
 		addr = 0
@@ -34,28 +49,24 @@ class CPU:
 		reg = self.registers
 		reg[reg_a] += reg[reg_b]
 		pc += 1
-		pass
 
 	def MUL_OP(self, reg_a, reg_b):
 		pc = self.pc
 		reg = self.registers
 		reg[reg_a] *= reg[reg_b]
 		pc += 1
-		pass
 
 	def SUB_OP(self, reg_a, reg_b):
 		pc = self.pc
 		reg = self.registers
 		reg[reg_a] -= reg[reg_b]
 		pc += 1
-		pass
 
 	def DIV_OP(self, reg_a, reg_b):
 		pc = self.pc
 		reg = self.registers
 		reg[reg_a] /= reg[reg_b]
 		pc += 1
-		pass
 
 
 	def alu(self, op, reg_a, reg_b):
@@ -80,11 +91,10 @@ class CPU:
 
 	def ram_read(self, addr):
 		return self.ram[addr]
-		pass
+
 	def ram_write(self, addr, value):
 		ram = self.ram
 		ram[addr] = value
-		pass
 
 	def trace(self):
 		"""
