@@ -85,6 +85,26 @@ class CPU:
 		ram = self.ram
 		ram[addr] = value
 		pass
+
+	def trace(self):
+		"""
+		Handy function to print out the CPU state. You might want to call this
+		from run() if you need help debugging.
+		"""
+		print(f"TRACE: %02X | %02X %02X %02X |" % (
+			self.pc,
+			# self.fl,
+			# self.ie,
+			self.ram_read(self.pc),
+			self.ram_read(self.pc + 1),
+			self.ram_read(self.pc + 2)
+		), end='')
+
+		for i in range(8):
+			print(" %02X" % self.registers[i], end='')
+
+		print()
+
 	def run(self):
 		pc = self.pc
 		ram = self.ram
