@@ -14,3 +14,21 @@ class CPU:
 		self.DIV = 0b10100011
 		self.MOD = 0b10100100
 		self.running = True
+
+
+	def load(self):
+		addr = 0
+		ram = self.ram
+
+		for instr in ram:
+			ram[addr] = instr
+			addr += 1
+	def HLT_OP(self, op):
+		HLT = self.HLT
+		if op is HLT:
+			self.running = False
+
+
+	def run(self):
+		pc = self.pc
+
