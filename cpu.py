@@ -30,15 +30,31 @@ class CPU:
 			self.running = False
 
 	def ADD_OP(self, reg_a, reg_b):
+		pc = self.pc
+		reg = self.registers
+		reg[reg_a] += reg[reg_b]
+		pc += 1
 		pass
 
 	def MUL_OP(self, reg_a, reg_b):
+		pc = self.pc
+		reg = self.registers
+		reg[reg_a] *= reg[reg_b]
+		pc += 1
 		pass
 
 	def SUB_OP(self, reg_a, reg_b):
+		pc = self.pc
+		reg = self.registers
+		reg[reg_a] -= reg[reg_b]
+		pc += 1
 		pass
 
 	def DIV_OP(self, reg_a, reg_b):
+		pc = self.pc
+		reg = self.registers
+		reg[reg_a] /= reg[reg_b]
+		pc += 1
 		pass
 
 
