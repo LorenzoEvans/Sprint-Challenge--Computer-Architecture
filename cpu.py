@@ -78,6 +78,13 @@ class CPU:
 		else:
 			raise Exception("Unsupported ALU operation")
 
+	def ram_read(self, addr):
+		return self.ram[addr]
+		pass
+	def ram_write(self, addr, value):
+		ram = self.ram
+		ram[addr] = value
+		pass
 	def run(self):
 		pc = self.pc
 		ram = self.ram
